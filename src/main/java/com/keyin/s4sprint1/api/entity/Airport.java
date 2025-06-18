@@ -1,5 +1,6 @@
 package com.keyin.s4sprint1.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -19,10 +20,12 @@ public class Airport {
     // Many airports belong to one city
     @ManyToOne
     @JoinColumn(name = "city_id")
+    @JsonBackReference
     private City city;
 
     // Many aircraft can use many airports (for takeoff/landing)
     @ManyToMany(mappedBy = "airports")
+    @JsonBackReference // Prevents infinite recursion from Aircraft -> Airport -> Aircraft...
     private List<Aircraft> aircraftList;
 
     // Constructors

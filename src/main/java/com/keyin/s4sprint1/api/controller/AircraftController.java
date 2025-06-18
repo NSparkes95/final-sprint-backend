@@ -20,6 +20,12 @@ public class AircraftController {
         return ResponseEntity.ok(aircraftService.getAllAircraft());
     }
 
+    // GET /aircraft works (prevents 405 error)
+    @GetMapping("/aircraft")
+    public ResponseEntity<List<Aircraft>> getAllAircraftsAlias() {
+        return ResponseEntity.ok(aircraftService.getAllAircraft());
+    }
+
     @GetMapping("/aircraft/{id}")
     public ResponseEntity<Aircraft> getAircraftById(@PathVariable long id) {
         return aircraftService.getAircraftById(id)
@@ -55,6 +61,4 @@ public class AircraftController {
                 .map(aircraft -> ResponseEntity.ok(aircraft.getAirports()))
                 .orElse(ResponseEntity.notFound().build());
     }
-
 }
-

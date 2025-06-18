@@ -1,5 +1,6 @@
 package com.keyin.s4sprint1.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +19,8 @@ public class City {
     private int population;
 
     // One city can have many airports
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Airport> airports;
 
     // Constructors
