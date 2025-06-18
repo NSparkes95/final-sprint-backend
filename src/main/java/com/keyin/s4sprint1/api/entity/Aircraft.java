@@ -1,5 +1,7 @@
 package com.keyin.s4sprint1.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -23,12 +25,14 @@ public class Aircraft {
             joinColumns = @JoinColumn(name = "aircraft_id"),
             inverseJoinColumns = @JoinColumn(name = "airport_id")
     )
+    @JsonManagedReference // Fix circular reference when serializing
     private List<Airport> airports;
 
     @ManyToMany(mappedBy = "aircraftList")
+    @JsonBackReference // Complements @JsonManagedReference in Passenger.aircraftList
     private List<Passenger> passengers;
 
-    //Constructor
+    // Constructor
     public Aircraft() {}
 
     public Aircraft(String type, String airlineName, int numberOfPassengers) {
@@ -38,47 +42,23 @@ public class Aircraft {
     }
 
     // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getType() {
-        return type;
-    }
-    public void setType(String type) {
-        this.type = type;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
-    public String getAirlineName() {
-        return airlineName;
-    }
-    public void setAirlineName(String airlineName) {
-        this.airlineName = airlineName;
-    }
+    public String getAirlineName() { return airlineName; }
+    public void setAirlineName(String airlineName) { this.airlineName = airlineName; }
 
-    public int getNumberOfPassengers(){
-        return numberOfPassengers;
-    }
-    public void setNumberOfPassengers(int numberOfPassengers) {
-        this.numberOfPassengers = numberOfPassengers;
-    }
+    public int getNumberOfPassengers() { return numberOfPassengers; }
+    public void setNumberOfPassengers(int numberOfPassengers) { this.numberOfPassengers = numberOfPassengers; }
 
-    public List<Airport> getAirports() {
-        return airports;
-    }
-    public void setAirports(List<Airport> airports) {
-        this.airports = airports;
-    }
+    public List<Airport> getAirports() { return airports; }
+    public void setAirports(List<Airport> airports) { this.airports = airports; }
 
-    public List<Passenger> getPassengers() {
-        return passengers;
-    }
-    public void setPassengers(List<Passenger> passengers) {
-        this.passengers = passengers;
-    }
+    public List<Passenger> getPassengers() { return passengers; }
+    public void setPassengers(List<Passenger> passengers) { this.passengers = passengers; }
 
     @Override
     public boolean equals(Object o) {
@@ -95,5 +75,4 @@ public class Aircraft {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 }

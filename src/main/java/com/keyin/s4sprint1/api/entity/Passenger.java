@@ -1,5 +1,7 @@
 package com.keyin.s4sprint1.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -20,23 +22,25 @@ public class Passenger {
     // Many passengers live in one city
     @ManyToOne
     @JoinColumn(name = "city_id")
+    @JsonBackReference
     private City city;
 
-    // Many passengers can fly on many aircraft (many-to-many)
+    // Many passengers can fly on many aircraft
     @ManyToMany
     @JoinTable(
             name = "passenger_aircraft",
             joinColumns = @JoinColumn(name = "passenger_id"),
             inverseJoinColumns = @JoinColumn(name = "aircraft_id")
     )
+    @JsonManagedReference
     private List<Aircraft> aircraftList;
 
     // Constructor
     public Passenger() {}
 
-    public Passenger(String firstName, String LastName, String phoneNumber) {
+    public Passenger(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;
-        this.lastName = LastName;
+        this.lastName = lastName;
         this.phoneNumber = phoneNumber;
     }
 
