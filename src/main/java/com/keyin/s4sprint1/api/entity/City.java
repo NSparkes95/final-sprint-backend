@@ -15,7 +15,10 @@ public class City {
     private Long id;
 
     private String name;
-    private String state;
+
+    @Column(name = "province") 
+    private String province;
+
     private int population;
 
     // One city can have many airports
@@ -26,9 +29,9 @@ public class City {
     // Constructors
     public City() {}
 
-    public City(String name, String state, int population) {
+    public City(String name, String province, int population) {
         this.name = name;
-        this.state = state;
+        this.province = province;
         this.population = population;
     }
 
@@ -47,11 +50,11 @@ public class City {
         this.name = name;
     }
 
-    public String getState() {
-        return state;
+    public String getProvince() {
+        return province;
     }
-    public void setState(String state) {
-        this.state = state;
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public int getPopulation() {
@@ -77,7 +80,7 @@ public class City {
         return population == city.population &&
                Objects.equals(id, city.id) &&
                Objects.equals(name, city.name) &&
-               Objects.equals(state, city.state);
+               Objects.equals(province, city.province);
     }
 
     @Override
