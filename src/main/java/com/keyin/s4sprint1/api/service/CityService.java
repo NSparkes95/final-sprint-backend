@@ -33,7 +33,7 @@ public class CityService {
         return cityRepository.findById(id)
                 .map(city -> {
                     city.setName(updatedCity.getName());
-                    city.setState(updatedCity.getState());
+                    city.setProvince(updatedCity.getProvince());
                     city.setPopulation(updatedCity.getPopulation());
                     return cityRepository.save(city);
                 })
