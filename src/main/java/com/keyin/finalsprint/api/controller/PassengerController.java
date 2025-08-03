@@ -1,9 +1,9 @@
-package com.keyin.s4sprint1.api.controller;
+package com.keyin.finalsprint.api.controller;
 
-import com.keyin.s4sprint1.api.entity.Aircraft;
-import com.keyin.s4sprint1.api.entity.Airport;
-import com.keyin.s4sprint1.api.entity.Passenger;
-import com.keyin.s4sprint1.api.service.PassengerService;
+import com.keyin.finalsprint.api.entity.Aircraft;
+import com.keyin.finalsprint.api.entity.Airport;
+import com.keyin.finalsprint.api.entity.Passenger;
+import com.keyin.finalsprint.api.service.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

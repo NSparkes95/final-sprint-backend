@@ -1,6 +1,6 @@
-package com.keyin.s4sprint1.api.repository;
+package com.keyin.finalsprint.api.repository;
 
-import com.keyin.s4sprint1.api.entity.Passenger;
+import com.keyin.finalsprint.api.entity.Passenger;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PassengerRepository extends JpaRepository<Passenger, Long> {

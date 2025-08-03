@@ -1,7 +1,13 @@
-package com.keyin.s4sprint1.api;
+package com.keyin.finalsprint.api;
 
-import com.keyin.s4sprint1.api.entity.*;
-import com.keyin.s4sprint1.api.repository.*;
+import com.keyin.finalsprint.api.entity.Aircraft;
+import com.keyin.finalsprint.api.entity.Airport;
+import com.keyin.finalsprint.api.entity.City;
+import com.keyin.finalsprint.api.entity.Passenger;
+import com.keyin.finalsprint.api.repository.AircraftRepository;
+import com.keyin.finalsprint.api.repository.AirportRepository;
+import com.keyin.finalsprint.api.repository.CityRepository;
+import com.keyin.finalsprint.api.repository.PassengerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

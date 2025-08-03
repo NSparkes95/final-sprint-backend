@@ -1,7 +1,7 @@
-package com.keyin.s4sprint1.api.service;
+package com.keyin.finalsprint.api.service;
 
-import com.keyin.s4sprint1.api.entity.Aircraft;
-import com.keyin.s4sprint1.api.repository.AircraftRepository;
+import com.keyin.finalsprint.api.entity.Aircraft;
+import com.keyin.finalsprint.api.repository.AircraftRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

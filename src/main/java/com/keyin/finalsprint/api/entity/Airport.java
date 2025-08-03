@@ -1,4 +1,4 @@
-package com.keyin.s4sprint1.api.entity;
+package com.keyin.finalsprint.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
