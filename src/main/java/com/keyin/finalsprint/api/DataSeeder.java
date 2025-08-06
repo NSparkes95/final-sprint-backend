@@ -4,9 +4,13 @@ import com.keyin.finalsprint.api.entity.Aircraft;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.entity.City;
 import com.keyin.finalsprint.api.entity.Passenger;
+import com.keyin.finalsprint.api.entity.Flight;
+import com.keyin.finalsprint.api.entity.Gate;
 import com.keyin.finalsprint.api.repository.AircraftRepository;
 import com.keyin.finalsprint.api.repository.AirportRepository;
 import com.keyin.finalsprint.api.repository.CityRepository;
+import com.keyin.finalsprint.api.repository.FlightRepository;
+import com.keyin.finalsprint.api.repository.GateRepository;
 import com.keyin.finalsprint.api.repository.PassengerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -19,11 +23,13 @@ public class DataSeeder {
 
     @Bean
     public CommandLineRunner seedDatabase(
-            CityRepository cityRepo,
-            AirportRepository airportRepo,
-            AircraftRepository aircraftRepo,
-            PassengerRepository passengerRepo
-    ) {
+    CityRepository cityRepo,
+    AirportRepository airportRepo,
+    AircraftRepository aircraftRepo,
+    PassengerRepository passengerRepo,
+    FlightRepository flightRepo,
+    GateRepository gateRepo
+) {
         return args -> {
             // --- 1. Create Cities ---
             City city1 = new City("Toronto", "ON", 3000000);
@@ -117,6 +123,33 @@ public class DataSeeder {
             p10.setCity(city10);
             p10.setAircraftList(Arrays.asList(aircraft5, aircraft10));
             passengerRepo.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10));
+        
+            // --- 5. Create Flights/ Gates ---
+            // Optional: Create Gates if needed
+           Gate gate1 = new Gate("A1", airport1); // For Toronto
+           Gate gate2 = new Gate("B2", airport7); // For St. John's
+
+            gateRepo.saveAll(Arrays.asList(gate1, gate2));
+
+
+            // Example Flights
+            Flight flight1 = new Flight();
+            flight1.setFlightNumber("AC101");
+            flight1.setDepartureAirport(airport1);
+            flight1.setArrivalAirport(airport7);
+            flight1.setAircraft(aircraft1);
+            flight1.setGate(gate1);
+
+            Flight flight2 = new Flight();
+            flight2.setFlightNumber("WS202"); 
+            flight2.setDepartureAirport(airport7);
+            flight2.setArrivalAirport(airport2);
+            flight2.setAircraft(aircraft2);
+            flight2.setGate(gate2);
+
+
+            flightRepo.saveAll(Arrays.asList(flight1, flight2));
+        
         };
     }
 }
