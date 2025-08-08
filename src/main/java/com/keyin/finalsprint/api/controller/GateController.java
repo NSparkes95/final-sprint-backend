@@ -1,8 +1,10 @@
 package com.keyin.finalsprint.api.controller;
 
+import com.keyin.finalsprint.api.dto.GateRequest;
 import com.keyin.finalsprint.api.entity.Gate;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.service.GateService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,10 @@ public class GateController {
     @Autowired
     private GateService gateService;
 
-    @GetMapping("/gates")
-    public ResponseEntity<List<Gate>> getAllGates() {
-        return ResponseEntity.ok(gateService.getAllGates());
+    @PostMapping("/gate")
+    public ResponseEntity<Gate> createGate(@Valid @RequestBody GateRequest gateRequest) {
+        Gate created = gateService.createGate(gateRequest);
+        return ResponseEntity.status(201).body(created);
     }
 
     @GetMapping("/gate/{id}")
@@ -28,13 +31,13 @@ public class GateController {
     }
 
     @PostMapping("/gate")
-    public ResponseEntity<Gate> createGate(@RequestBody Gate newGate) {
+    public ResponseEntity<Gate> createGate(@Valid @RequestBody Gate newGate) {
         Gate created = gateService.createGate(newGate);
         return ResponseEntity.status(201).body(created);
     }
 
     @PutMapping("/gate/{id}")
-    public ResponseEntity<Gate> updateGate(@PathVariable long id, @RequestBody Gate updatedGate) {
+    public ResponseEntity<Gate> updateGate(@PathVariable long id, @Valid @RequestBody Gate updatedGate) {
         try {
             Gate gate = gateService.updateGate(id, updatedGate);
             return ResponseEntity.ok(gate);

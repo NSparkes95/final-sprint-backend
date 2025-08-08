@@ -4,12 +4,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 @Entity
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Flight number is mandatory")
     private String flightNumber;
 
     // Many flights use one aircraft
@@ -34,6 +38,7 @@ public class Flight {
     @ManyToOne
     @JoinColumn(name = "gate_id")
     @JsonBackReference
+    @NotNull(message = "Gate is mandatory")
     private Gate gate;
 
     // Constructors

@@ -25,7 +25,7 @@ public class Aircraft {
             joinColumns = @JoinColumn(name = "aircraft_id"),
             inverseJoinColumns = @JoinColumn(name = "airport_id")
     )
-    @JsonManagedReference // Fix circular reference when serializing
+    @JsonManagedReference("aircraft-airport")
     private List<Airport> airports;
 
     @ManyToMany(mappedBy = "aircraftList")

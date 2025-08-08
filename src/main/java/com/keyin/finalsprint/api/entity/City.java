@@ -23,8 +23,13 @@ public class City {
 
     // One city can have many airports
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference("city-airports")
     private List<Airport> airports;
+
+    // One city can have many passengers
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    @JsonManagedReference("city-passengers")
+    private List<Passenger> passengers;
 
     // Constructors
     public City() {}

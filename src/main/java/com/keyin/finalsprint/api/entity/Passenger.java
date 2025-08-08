@@ -22,7 +22,7 @@ public class Passenger {
     // Many passengers live in one city
     @ManyToOne
     @JoinColumn(name = "city_id")
-    @JsonBackReference
+    @JsonBackReference("city-passengers")
     private City city;
 
     // Many passengers can fly on many aircraft
@@ -32,7 +32,7 @@ public class Passenger {
             joinColumns = @JoinColumn(name = "passenger_id"),
             inverseJoinColumns = @JoinColumn(name = "aircraft_id")
     )
-    @JsonManagedReference
+    @JsonManagedReference("passenger-aircraft") // Fix circular reference when serializing
     private List<Aircraft> aircraftList;
 
     // Constructor

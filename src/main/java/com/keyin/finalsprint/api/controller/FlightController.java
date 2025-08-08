@@ -5,6 +5,7 @@ import com.keyin.finalsprint.api.entity.Aircraft;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.entity.Gate;
 import com.keyin.finalsprint.api.service.FlightService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,13 +31,13 @@ public class FlightController {
     }
 
     @PostMapping("/flight")
-    public ResponseEntity<Flight> createFlight(@RequestBody Flight newFlight) {
+    public ResponseEntity<Flight> createFlight(@Valid @RequestBody Flight newFlight) {
         Flight created = flightService.createFlight(newFlight);
         return ResponseEntity.status(201).body(created);
     }
 
     @PutMapping("/flight/{id}")
-    public ResponseEntity<Flight> updateFlight(@PathVariable long id, @RequestBody Flight updatedFlight) {
+    public ResponseEntity<Flight> updateFlight(@PathVariable long id, @Valid @RequestBody Flight updatedFlight) {
         try {
             Flight flight = flightService.updateFlight(id, updatedFlight);
             return ResponseEntity.ok(flight);

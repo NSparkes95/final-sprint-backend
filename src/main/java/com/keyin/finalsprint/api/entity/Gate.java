@@ -3,6 +3,8 @@ package com.keyin.finalsprint.api.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.Objects;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Gate {
@@ -10,12 +12,14 @@ public class Gate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Gate code is mandatory")
     private String code;
 
     // Many gates belong to one airport
     @ManyToOne
     @JoinColumn(name = "airport_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("airport-gates") // Name matches Airport.java exactly
+    @NotNull(message = "Airport is mandatory")
     private Airport airport;
 
     //Constructor
