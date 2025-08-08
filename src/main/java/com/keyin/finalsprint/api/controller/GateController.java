@@ -30,12 +30,6 @@ public class GateController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/gate")
-    public ResponseEntity<Gate> createGate(@Valid @RequestBody Gate newGate) {
-        Gate created = gateService.createGate(newGate);
-        return ResponseEntity.status(201).body(created);
-    }
-
     @PutMapping("/gate/{id}")
     public ResponseEntity<Gate> updateGate(@PathVariable long id, @Valid @RequestBody Gate updatedGate) {
         try {
