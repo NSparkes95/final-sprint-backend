@@ -14,13 +14,14 @@ import java.util.Optional;
 
 @Service
 public class GateService {
-    private final GateRepository gateRepository;
 
-    private AirportRepository airportRepository;
+    private final GateRepository gateRepository;
+    private final AirportRepository airportRepository;
 
     @Autowired
-    public GateService(GateRepository gateRepository) {
+    public GateService(GateRepository gateRepository, AirportRepository airportRepository) {
         this.gateRepository = gateRepository;
+        this.airportRepository = airportRepository;
     }
 
     public List<Gate> getAllGates() {
@@ -31,15 +32,25 @@ public class GateService {
         return gateRepository.findById(id);
     }
 
-    public Gate createGate(@Valid Gate gate) {
+    public Gate createGate(GateRequest gateRequest) {
+        Gate gate = new Gate();
+        gate.setCode(gateRequest.getCode());
+
+        Airport airport = airportRepository.findById(gateRequest.getAirportId())
+                .orElseThrow(() -> new RuntimeException("Airport not found with ID: " + gateRequest.getAirportId()));
+
+        gate.setAirport(airport);
+
         return gateRepository.save(gate);
     }
 
-    public Gate updateGate(Long id, Gate updatedGate) {
+    public Gate updateGate(Long id, GateRequest gateRequest) {
         return gateRepository.findById(id)
                 .map(gate -> {
-                    gate.setCode(updatedGate.getCode());
-                    gate.setAirport(updatedGate.getAirport());
+                    gate.setCode(gateRequest.getCode());
+                    Airport airport = airportRepository.findById(gateRequest.getAirportId())
+                            .orElseThrow(() -> new RuntimeException("Airport not found with ID: " + gateRequest.getAirportId()));
+                    gate.setAirport(airport);
                     return gateRepository.save(gate);
                 })
                 .orElseThrow(() -> new RuntimeException("Gate not found"));
@@ -47,18 +58,5 @@ public class GateService {
 
     public void deleteGate(Long id) {
         gateRepository.deleteById(id);
-    }
-
-    public Gate createGate(GateRequest gateRequest) {
-        Gate gate = new Gate();
-        gate.setCode(gateRequest.getCode());
-
-        // Find the airport by ID from the request
-        Airport airport = airportRepository.findById(gateRequest.getAirportId())
-                .orElseThrow(() -> new RuntimeException("Airport not found"));
-
-        gate.setAirport(airport);
-
-        return gateRepository.save(gate);
     }
 }

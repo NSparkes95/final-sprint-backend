@@ -18,8 +18,8 @@ public class GateController {
     private GateService gateService;
 
     @PostMapping("/gate")
-    public ResponseEntity<Gate> createGate(@Valid @RequestBody GateRequest gateRequest) {
-        Gate created = gateService.createGate(gateRequest);
+    public ResponseEntity<Gate> createGate(@Valid @RequestBody GateRequest newGateRequest) {
+        Gate created = gateService.createGate(newGateRequest);
         return ResponseEntity.status(201).body(created);
     }
 
@@ -31,9 +31,9 @@ public class GateController {
     }
 
     @PutMapping("/gate/{id}")
-    public ResponseEntity<Gate> updateGate(@PathVariable long id, @Valid @RequestBody Gate updatedGate) {
+    public ResponseEntity<Gate> updateGate(@PathVariable long id, @Valid @RequestBody GateRequest updatedGateRequest) {
         try {
-            Gate gate = gateService.updateGate(id, updatedGate);
+            Gate gate = gateService.updateGate(id, updatedGateRequest);
             return ResponseEntity.ok(gate);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
