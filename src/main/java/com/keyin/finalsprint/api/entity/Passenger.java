@@ -78,4 +78,19 @@ public class Passenger {
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, phoneNumber);
     }
+
+    public void setEmail(String email) {
+    }
+
+    public void setName(String name) {
+
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
+    public String getEmail() {
+        return firstName.toLowerCase() + "." + lastName.toLowerCase() + "@example.com";
+    }
 }

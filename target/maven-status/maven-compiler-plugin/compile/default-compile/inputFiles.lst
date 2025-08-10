@@ -6,7 +6,13 @@ C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\sr
 C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\controller\GlobalExceptionHandler.java
 C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\controller\PassengerController.java
 C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\DataSeeder.java
+C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\dto\AircraftRequest.java
+C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\dto\AirportRequest.java
+C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\dto\AirportResponse.java
 C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\dto\GateRequest.java
+C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\dto\GateResponse.java
+C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\dto\PassengerRequest.java
+C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\dto\PassengerResponse.java
 C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\entity\Aircraft.java
 C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\entity\Airport.java
 C:\Users\nicole\OneDrive - Keyin College\Fourth Semester\final-sprint-backend\src\main\java\com\keyin\finalsprint\api\entity\City.java

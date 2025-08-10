@@ -75,4 +75,8 @@ public class Aircraft {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public Object getName() {
+        return null;
+    }
 }

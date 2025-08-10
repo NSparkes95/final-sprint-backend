@@ -1,9 +1,12 @@
 package com.keyin.finalsprint.api.controller;
 
+import com.keyin.finalsprint.api.dto.PassengerRequest;
+import com.keyin.finalsprint.api.dto.PassengerResponse;
 import com.keyin.finalsprint.api.entity.Aircraft;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.entity.Passenger;
 import com.keyin.finalsprint.api.service.PassengerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,28 +21,31 @@ public class PassengerController {
     private PassengerService passengerService;
 
     @GetMapping("/passengers")
-    public ResponseEntity<List<Passenger>> getAllPassengers() {
+    public ResponseEntity<List<PassengerResponse>> getAllPassengers() {
         return ResponseEntity.ok(passengerService.getAllPassengers());
     }
 
     @GetMapping("/passenger/{id}")
-    public ResponseEntity<Passenger> getPassengerById(@PathVariable long id) {
+    public ResponseEntity<PassengerResponse> getPassengerById(@PathVariable long id) {
         return passengerService.getPassengerById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/passenger")
-    public ResponseEntity<Passenger> createPassenger(@RequestBody Passenger newPassenger) {
-        Passenger created = passengerService.createPassenger(newPassenger);
+    public ResponseEntity<PassengerResponse> createPassenger(@Valid @RequestBody PassengerRequest request) {
+        PassengerResponse created = passengerService.createPassenger(request);
         return ResponseEntity.status(201).body(created);
     }
 
     @PutMapping("/passenger/{id}")
-    public ResponseEntity<Passenger> updatePassenger(@PathVariable long id, @RequestBody Passenger updatedPassenger) {
+    public ResponseEntity<PassengerResponse> updatePassenger(
+            @PathVariable long id,
+            @Valid @RequestBody PassengerRequest request
+    ) {
         try {
-            Passenger passenger = passengerService.updatePassenger(id, updatedPassenger);
-            return ResponseEntity.ok(passenger);
+            PassengerResponse updated = passengerService.updatePassenger(id, request);
+            return ResponseEntity.ok(updated);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
@@ -52,30 +58,16 @@ public class PassengerController {
     }
 
     @GetMapping("/passenger/{id}/aircraft")
-    public ResponseEntity<List<Aircraft>> getAircraftByPassengerId(@PathVariable long id) {
-        return passengerService.getPassengerById(id)
-                .map(passenger -> ResponseEntity.ok(passenger.getAircraftList()))
+    public ResponseEntity<Object> getAircraftByPassengerId(@PathVariable long id) {
+        return passengerService.getPassengerAircraftNames(id)
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/passenger/{id}/airports")
-    public ResponseEntity<List<Airport>> getAirportsUsedByPassenger(@PathVariable long id) {
-        return passengerService.getPassengerById(id)
-                .map(passenger -> {
-                    List<Airport> airports = new ArrayList<>();
-                    passenger.getAircraftList().forEach(aircraft -> {
-                        if (aircraft.getAirports() != null) {
-                            for (Airport airport : aircraft.getAirports()) {
-                                if (!airports.contains(airport)) {
-                                    airports.add(airport);
-                                }
-                            }
-                        }
-                    });
-                    return ResponseEntity.ok(airports);
-                })
+    public ResponseEntity<List<String>> getAirportsUsedByPassenger(@PathVariable long id) {
+        return passengerService.getPassengerAirportNames(id)
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
-
 }
