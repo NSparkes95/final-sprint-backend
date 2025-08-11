@@ -1,11 +1,10 @@
 package com.keyin.finalsprint.api.repository;
 
-import com.keyin.finalsprint.api.FinalSprintApiApplication;
 import com.keyin.finalsprint.api.entity.TreeSnapshot;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@ContextConfiguration(classes = FinalSprintApiApplication.class)
+@ActiveProfiles("test")
 class TreeSnapshotRepositoryTest {
 
     @Autowired
@@ -33,3 +32,4 @@ class TreeSnapshotRepositoryTest {
         assertThat(snapshots.get(0).getInputNumbers()).isEqualTo("7,2,9");
     }
 }
+
