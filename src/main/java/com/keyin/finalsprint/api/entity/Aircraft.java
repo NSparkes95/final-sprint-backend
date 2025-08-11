@@ -2,6 +2,7 @@ package com.keyin.finalsprint.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.keyin.finalsprint.api.dto.AirportResponse;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +33,11 @@ public class Aircraft {
     @JsonBackReference // Complements @JsonManagedReference in Passenger.aircraftList
     private List<Passenger> passengers;
 
+    @ManyToOne
+    @JoinColumn(name = "airline_id")
+    @JsonBackReference("airline-aircraft")
+    private Airline airline;
+
     // Constructor
     public Aircraft() {}
 
@@ -60,6 +66,9 @@ public class Aircraft {
     public List<Passenger> getPassengers() { return passengers; }
     public void setPassengers(List<Passenger> passengers) { this.passengers = passengers; }
 
+    public Airline getAirline() { return airline; }
+    public void setAirline(Airline airline) { this.airline = airline; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,5 +87,13 @@ public class Aircraft {
 
     public Object getName() {
         return null;
+    }
+
+    public Object getCode() {
+        return null;
+    }
+
+    public AirportResponse getCity() {
+        return null; // This method is not applicable for Aircraft, as it does not have a city attribute.
     }
 }

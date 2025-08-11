@@ -42,7 +42,8 @@ public class Gate {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Gate gate)) return false;
+        if (!(o instanceof Gate)) return false;
+        Gate gate = (Gate) o;
         return Objects.equals(id, gate.id) && Objects.equals(code, gate.code) && Objects.equals(airport, gate.airport);
     }
 

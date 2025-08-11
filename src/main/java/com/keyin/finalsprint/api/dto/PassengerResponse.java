@@ -1,17 +1,34 @@
 package com.keyin.finalsprint.api.dto;
 
 import java.util.List;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class PassengerResponse {
 
+    @Schema(description = "Unique passenger ID", example = "10")
     private Long id;
+
+    @Schema(description = "First name of the passenger", example = "John")
     private String firstName;
+
+    @Schema(description = "Last name of the passenger", example = "Doe")
     private String lastName;
+
+    @Schema(description = "Passenger's phone number", example = "+1-709-555-1234")
     private String phoneNumber;
+
+    @Schema(description = "Passenger's email", example = "john.doe@example.com")
     private String email;
+
+    @Schema(description = "City ID where passenger resides", example = "1")
     private Long cityId;
+
+    @Schema(description = "City name where passenger resides", example = "St. John's")
     private String cityName;
+
+    @Schema(description = "List of aircraft types passenger can fly on", example = "[\"Boeing 737\", \"Airbus A320\"]")
     private List<String> aircraftTypes;
+
 
     public PassengerResponse() {
         this.id = id;
