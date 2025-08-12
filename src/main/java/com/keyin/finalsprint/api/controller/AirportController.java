@@ -3,6 +3,8 @@ package com.keyin.finalsprint.api.controller;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +12,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class AirportController {
+
     @Autowired
     private AirportService airportService;
 
@@ -26,13 +30,13 @@ public class AirportController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/airport")
+    @PostMapping(value = "/airport", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Airport> createAirport(@RequestBody Airport newAirport) {
         Airport created = airportService.createAirport(newAirport);
-        return ResponseEntity.status(201).body(created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    @PutMapping("/airport/{id}")
+    @PutMapping(value = "/airport/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Airport> updateAirport(@PathVariable long id, @RequestBody Airport updatedAirport) {
         try {
             Airport airport = airportService.updateAirport(id, updatedAirport);
@@ -44,8 +48,7 @@ public class AirportController {
 
     @DeleteMapping("/airport/{id}")
     public ResponseEntity<Void> deleteAirport(@PathVariable long id) {
-        airportService.deleteAirport(id);
+        airportService.deleteAirport(id); 
         return ResponseEntity.noContent().build();
     }
 }
-

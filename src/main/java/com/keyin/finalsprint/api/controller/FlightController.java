@@ -6,6 +6,8 @@ import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.entity.Gate;
 import com.keyin.finalsprint.api.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +15,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class FlightController {
+
     @Autowired
     private FlightService flightService;
 
@@ -29,13 +33,13 @@ public class FlightController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/flight")
+    @PostMapping(value = "/flight", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Flight> createFlight(@RequestBody Flight newFlight) {
         Flight created = flightService.createFlight(newFlight);
-        return ResponseEntity.status(201).body(created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    @PutMapping("/flight/{id}")
+    @PutMapping(value = "/flight/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Flight> updateFlight(@PathVariable long id, @RequestBody Flight updatedFlight) {
         try {
             Flight flight = flightService.updateFlight(id, updatedFlight);

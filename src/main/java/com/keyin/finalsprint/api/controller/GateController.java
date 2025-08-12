@@ -4,14 +4,16 @@ import com.keyin.finalsprint.api.entity.Gate;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.service.GateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class GateController {
+
     @Autowired
     private GateService gateService;
 
@@ -27,14 +29,22 @@ public class GateController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/gate")
-    public ResponseEntity<Gate> createGate(@RequestBody Gate newGate) {
+    @PostMapping(value = "/gate", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> createGate(@RequestBody Gate newGate) {
+        if (newGate.getAirport() == null || newGate.getAirport().getId() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("airport.id is required when creating a gate");
+        }
         Gate created = gateService.createGate(newGate);
-        return ResponseEntity.status(201).body(created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    @PutMapping("/gate/{id}")
-    public ResponseEntity<Gate> updateGate(@PathVariable long id, @RequestBody Gate updatedGate) {
+    @PutMapping(value = "/gate/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateGate(@PathVariable long id, @RequestBody Gate updatedGate) {
+        if (updatedGate.getAirport() == null || updatedGate.getAirport().getId() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("airport.id is required when updating a gate");
+        }
         try {
             Gate gate = gateService.updateGate(id, updatedGate);
             return ResponseEntity.ok(gate);
