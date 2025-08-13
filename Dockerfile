@@ -1,18 +1,31 @@
-# Use official Java image
-FROM eclipse-temurin:24-jdk
+# ==============================
+# Stage 1 — Build the JAR
+# ==============================
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
-# Set working directory inside container
 WORKDIR /app
 
-# Copy Maven wrapper & project files
-COPY . .
+# Copy pom.xml first (better layer caching)
+COPY pom.xml ./
+RUN mvn dependency:go-offline
 
-# Build the application
-RUN ./mvnw clean package -DskipTests
+# Copy source code
+COPY src ./src
 
-# Run the Spring Boot application
-CMD ["java", "-jar", "target/s4-sprint1-api-1.0.0.jar"]
+# Build the Spring Boot fat JAR (skip tests for speed)
+RUN mvn clean package -DskipTests
 
-# Expose app port
+# ==============================
+# Stage 2 — Run the JAR
+# ==============================
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+
+# Copy only the built JAR from the build stage
+COPY --from=builder /app/target/*.jar app.jar
+
 EXPOSE 8080
 
+# Run Spring Boot app
+ENTRYPOINT ["java", "-jar", "app.jar"]
