@@ -3,12 +3,12 @@ package com.keyin.finalsprint.api.controller;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -30,25 +30,61 @@ public class AirportController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping(value = "/airport", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Airport> createAirport(@RequestBody Airport newAirport) {
-        Airport created = airportService.createAirport(newAirport);
+    // CREATE: tolerant JSON (kills 415), validates name
+    @PostMapping(value = "/airport", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> createAirport(@RequestBody Map<String, Object> body) {
+        if (body == null) return ResponseEntity.badRequest().body("Body is required");
+
+        String name = body.get("name") == null ? null : String.valueOf(body.get("name")).trim();
+        String code = body.get("code") == null ? null : String.valueOf(body.get("code")).trim();
+
+        if (name == null || name.isBlank()) {
+            return ResponseEntity.badRequest().body("name is required");
+        }
+
+        Airport a = new Airport();
+        a.setName(name);
+        if (code != null && !code.isBlank()) a.setCode(code);
+
+        Airport created = airportService.createAirport(a);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    @PutMapping(value = "/airport/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Airport> updateAirport(@PathVariable long id, @RequestBody Airport updatedAirport) {
+    // UPDATE: tolerant JSON (kills 415), validates name
+    @PutMapping(value = "/airport/{id}", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateAirport(@PathVariable long id, @RequestBody Map<String, Object> body) {
+        if (body == null) return ResponseEntity.badRequest().body("Body is required");
+
+        String name = body.get("name") == null ? null : String.valueOf(body.get("name")).trim();
+        String code = body.get("code") == null ? null : String.valueOf(body.get("code")).trim();
+
+        if (name == null || name.isBlank()) {
+            return ResponseEntity.badRequest().body("name is required");
+        }
+
         try {
-            Airport airport = airportService.updateAirport(id, updatedAirport);
-            return ResponseEntity.ok(airport);
+            Airport a = new Airport();
+            a.setId(id);
+            a.setName(name);
+            if (code != null && !code.isBlank()) a.setCode(code);
+
+            Airport saved = airportService.updateAirport(id, a);
+            return ResponseEntity.ok(saved);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @DeleteMapping("/airport/{id}")
-    public ResponseEntity<Void> deleteAirport(@PathVariable long id) {
-        airportService.deleteAirport(id); 
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteAirport(@PathVariable long id) {
+        try {
+            airportService.deleteAirport(id);
+            return ResponseEntity.noContent().build();
+        } catch (DataIntegrityViolationException dive) {
+            // FK constraint (gates/flights still reference this airport)
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Airport is referenced by gates or flights.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete airport.");
+        }
     }
 }
