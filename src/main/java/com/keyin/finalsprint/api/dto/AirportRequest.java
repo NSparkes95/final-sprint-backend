@@ -3,7 +3,6 @@ package com.keyin.finalsprint.api.dto;
 import com.keyin.finalsprint.api.entity.Airport;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Schema(description = "Request object for creating or updating an airport")
@@ -18,8 +17,7 @@ public class AirportRequest extends Airport {
     @Size(min = 3, max = 3, message = "Code must be exactly 3 characters")
     private String code;
 
-    @NotNull(message = "City ID is required")
-    private Long cityId;
+    private int cityId;
 
     public String getName() {
         return name;
@@ -37,11 +35,11 @@ public class AirportRequest extends Airport {
         this.code = code;
     }
 
-    public Long getCityId() {
+    public int getCityId() {
         return cityId;
     }
 
-    public void setCityId(Long cityId) {
+    public void setCityId(int cityId) {
         this.cityId = cityId;
     }
 }

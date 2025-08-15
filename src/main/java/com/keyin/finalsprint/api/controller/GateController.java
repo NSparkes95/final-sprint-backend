@@ -51,7 +51,7 @@ public class GateController {
     }
 
     @GetMapping("/gate/{id}/airport")
-    public ResponseEntity<Object> getAirportByGateId(@PathVariable long id) {
+    public ResponseEntity<Airport> getAirportByGateId(@PathVariable long id) {
         return gateService.getGateById(id)
                 .map(gate -> ResponseEntity.ok(gate.getAirport()))
                 .orElse(ResponseEntity.notFound().build());

@@ -36,7 +36,7 @@ public class Gate {
     public String getCode() { return code; }
     public void setCode(String code) { this.code = code; }
 
-    public Airport getAirport() { return airport; }
+    public Object getAirport() { return airport; }
     public void setAirport(Airport airport) { this.airport = airport; }
 
     @Override
@@ -50,5 +50,9 @@ public class Gate {
     @Override
     public int hashCode() {
         return Objects.hash(id, code, airport);
+    }
+
+    public Long getAirportId() {
+        return 0L;
     }
 }

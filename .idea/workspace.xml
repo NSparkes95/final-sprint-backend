@@ -5,11 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8865bdcd-963b-49fb-afe9-25c4ac19b665" name="Changes" comment="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies">
-      <change beforePath="$PROJECT_DIR$/screenshots/Dylan_Sprint_Responsibilities.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/ERDiagram.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/Sprint Perspective- Christian Rose.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/SprintReflection-NicoleSparkes.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/s4-sprint1-video.mkv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/controller/GateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/controller/GateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/dto/AirportRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/dto/AirportRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/dto/AirportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/dto/AirportResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/dto/GateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/dto/GateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/entity/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/entity/Airport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/entity/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/entity/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/entity/Gate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/entity/Gate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/repository/CityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/repository/CityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/service/AirportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/service/AirportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/DataSeeder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/FinalSprintApiApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/AircraftController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/AirlineController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/AirportController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/CityController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/FlightController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/GateController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/GlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/PassengerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/controller/TreeSnapshotController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/AircraftRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/AircraftResponse$AirlineRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/AircraftResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/AirlineRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/AirlineResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/AirportRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/AirportResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/CityRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/CityResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/GateRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/GateResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/PassengerRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/dto/PassengerResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/Aircraft.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/Airline.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/Airport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/City.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/Flight.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/Gate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/Passenger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/entity/TreeSnapshot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/AircraftRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/AirlineRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/AirportRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/CityRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/FlightRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/GateRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/PassengerRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/repository/TreeSnapshotRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/AircraftService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/AirlineService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/AirportService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/CityService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/FlightService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/GateService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/PassengerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/keyin/finalsprint/api/service/TreeSnapshotService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/s4-sprint1-api-1.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/s4-sprint1-api-1.0.0.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/keyin/finalsprint/api/DsaFSApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/keyin/finalsprint/api/controller/TreeSnapshotControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/keyin/finalsprint/api/repository/TreeSnapshotRepositoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/keyin/finalsprint/api/service/TreeSnapshotServiceTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,21 +122,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.FinalSprintApiApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.Spring Boot Dev.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DsaFSApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TreeSnapshotControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TreeSnapshotRepositoryTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.TreeSnapshotRepositoryTest.saveAndFindAll_ShouldReturnSavedSnapshot.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicole/OneDrive - Keyin College/Fourth Semester/final-sprint-backend&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FinalSprintApiApplication.executor": "Debug",
+    "Application.Spring Boot Dev.executor": "Run",
+    "JUnit.DsaFSApplicationTests.executor": "Run",
+    "JUnit.TreeSnapshotControllerTest.executor": "Run",
+    "JUnit.TreeSnapshotRepositoryTest.executor": "Debug",
+    "JUnit.TreeSnapshotRepositoryTest.saveAndFindAll_ShouldReturnSavedSnapshot.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "backend-api-complete",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/nicole/OneDrive - Keyin College/Fourth Semester/final-sprint-backend"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.keyin.finalsprint.api.dto" />

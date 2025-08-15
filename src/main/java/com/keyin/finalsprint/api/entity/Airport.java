@@ -72,4 +72,8 @@ public class Airport {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public int getCityId() {
+        return 0;
+    }
 }
