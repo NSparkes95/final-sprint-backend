@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8865bdcd-963b-49fb-afe9-25c4ac19b665" name="Changes" comment="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies">
+      <change beforePath="$PROJECT_DIR$/screenshots/Dylan_Sprint_Responsibilities.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/ERDiagram.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/Sprint Perspective- Christian Rose.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/SprintReflection-NicoleSparkes.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/s4-sprint1-video.mkv" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NSparkes95&quot;
+  }
+}</component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NSparkes95/final-sprint-backend&quot;,
+    &quot;accountId&quot;: &quot;6c1dbecd-ca91-4533-8eae-ac8c5a3aae2e&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="30mrlHTarWKuShxwjDkB8IkLcQW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FinalSprintApiApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Spring Boot Dev.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DsaFSApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TreeSnapshotControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TreeSnapshotRepositoryTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.TreeSnapshotRepositoryTest.saveAndFindAll_ShouldReturnSavedSnapshot.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicole/OneDrive - Keyin College/Fourth Semester/final-sprint-backend&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.keyin.finalsprint.api.dto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Spring Boot Dev">
+    <configuration name="Spring Boot Dev" type="Application" factoryName="Application">
+      <envs>
+        <env name="DB_USERNAME" value="root" />
+        <env name="DB_PASSWORD" value="95ScarlettStella!" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.keyin.finalsprint.api.FinalSprintApiApplication" />
+      <module name="s4-sprint1-api" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DsaFSApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s4-sprint1-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.keyin.finalsprint.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.keyin.finalsprint.api" />
+      <option name="MAIN_CLASS_NAME" value="com.keyin.finalsprint.api.DsaFSApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreeSnapshotControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s4-sprint1-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.keyin.finalsprint.api.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.keyin.finalsprint.api.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.keyin.finalsprint.api.controller.TreeSnapshotControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreeSnapshotRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s4-sprint1-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.keyin.finalsprint.api.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.keyin.finalsprint.api.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.keyin.finalsprint.api.repository.TreeSnapshotRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TreeSnapshotRepositoryTest.saveAndFindAll_ShouldReturnSavedSnapshot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="s4-sprint1-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.keyin.finalsprint.api.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.keyin.finalsprint.api.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.keyin.finalsprint.api.repository.TreeSnapshotRepositoryTest" />
+      <option name="METHOD_NAME" value="saveAndFindAll_ShouldReturnSavedSnapshot" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TreeSnapshotRepositoryTest.saveAndFindAll_ShouldReturnSavedSnapshot" />
+        <item itemvalue="JUnit.TreeSnapshotRepositoryTest" />
+        <item itemvalue="JUnit.TreeSnapshotControllerTest" />
+        <item itemvalue="JUnit.DsaFSApplicationTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8865bdcd-963b-49fb-afe9-25c4ac19b665" name="Changes" comment="" />
+      <created>1754243741037</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754243741037</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Refactor package structure to finalize project naming conventions">
+      <option name="closed" value="true" />
+      <created>1754244211271</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754244211271</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactor package structure to finalize project naming conventions">
+      <option name="closed" value="true" />
+      <created>1754437261430</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754437261430</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Flight and Gate entities with controllers, services, and repositories; update database connection properties">
+      <option name="closed" value="true" />
+      <created>1754438045967</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754438045968</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add Flight and Gate entities with controllers, services, and repositories; update database connection properties">
+      <option name="closed" value="true" />
+      <created>1754438668791</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754438668791</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add Flight and Gate entities with controllers, services, and repositories; update database connection properties">
+      <option name="closed" value="true" />
+      <created>1754672567370</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1754672567370</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Flight and Gate entities with controllers, services, and repositories; update database connection properties">
+      <option name="closed" value="true" />
+      <created>1754785048141</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1754785048142</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies">
+      <option name="closed" value="true" />
+      <created>1754953654228</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1754953654228</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies">
+      <option name="closed" value="true" />
+      <created>1755052583512</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1755052583513</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies">
+      <option name="closed" value="true" />
+      <created>1755193003009</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1755193003010</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies">
+      <option name="closed" value="true" />
+      <created>1755193115491</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1755193115492</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactor package structure to finalize project naming conventions" />
+    <MESSAGE value="Add Flight and Gate entities with controllers, services, and repositories; update database connection properties" />
+    <MESSAGE value="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update application properties for MySQL and H2 configurations; modify Dockerfile for Java 24 and adjust pom.xml for dependencies" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/keyin/finalsprint/api/service/AirportService.java</url>
+          <line>66</line>
+          <properties>
+            <option name="lambda-ordinal" value="0" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

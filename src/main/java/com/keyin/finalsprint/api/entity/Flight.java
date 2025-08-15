@@ -3,12 +3,16 @@ package com.keyin.finalsprint.api.entity;
 import jakarta.persistence.*;
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 @Entity
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Flight number is mandatory")
     private String flightNumber;
 
     // Many flights use one aircraft
@@ -29,6 +33,11 @@ public class Flight {
     // Many flights use one gate (departure)
     @ManyToOne
     @JoinColumn(name = "gate_id")
+<<<<<<< HEAD
+=======
+    @JsonBackReference
+    @NotNull(message = "Gate is mandatory")
+>>>>>>> main
     private Gate gate;
 
     // Constructors

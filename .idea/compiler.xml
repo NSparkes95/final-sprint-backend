@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="s4-sprint1-api" options="-parameters" />
+      <module name="s4-sprint1-api" options="" />
     </option>
   </component>
 </project>

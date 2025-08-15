@@ -1,0 +1,4 @@
+com\keyin\finalsprint\api\repository\TreeSnapshotRepositoryTest.class
+com\keyin\finalsprint\api\service\TreeSnapshotServiceTest.class
+com\keyin\finalsprint\api\DsaFSApplicationTests.class
+com\keyin\finalsprint\api\controller\TreeSnapshotControllerTest.class
