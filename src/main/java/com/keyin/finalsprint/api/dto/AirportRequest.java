@@ -1,12 +1,13 @@
 package com.keyin.finalsprint.api.dto;
 
+import com.keyin.finalsprint.api.entity.Airport;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Schema(description = "Request object for creating or updating an airport")
-public class AirportRequest {
+public class AirportRequest extends Airport {
 
     @Schema(description = "Airport name", example = "St. John's International Airport")
     @NotBlank(message = "Airport name is required")

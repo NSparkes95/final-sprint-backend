@@ -1,6 +1,5 @@
 package com.keyin.finalsprint.api.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.Objects;
 
@@ -19,26 +18,26 @@ public class Flight {
     // Many flights use one aircraft
     @ManyToOne
     @JoinColumn(name = "aircraft_id")
-    @JsonBackReference
     private Aircraft aircraft;
 
     // Many flights depart from one airport
     @ManyToOne
     @JoinColumn(name = "departure_airport_id")
-    @JsonBackReference
     private Airport departureAirport;
 
     // Many flights arrive at one airport
     @ManyToOne
     @JoinColumn(name = "arrival_airport_id")
-    @JsonBackReference
     private Airport arrivalAirport;
 
     // Many flights use one gate (departure)
     @ManyToOne
     @JoinColumn(name = "gate_id")
+<<<<<<< HEAD
+=======
     @JsonBackReference
     @NotNull(message = "Gate is mandatory")
+>>>>>>> main
     private Gate gate;
 
     // Constructors
@@ -77,7 +76,7 @@ public class Flight {
         if (!(o instanceof Flight)) return false;
         Flight flight = (Flight) o;
         return Objects.equals(id, flight.id) &&
-                Objects.equals(flightNumber, flight.flightNumber);
+               Objects.equals(flightNumber, flight.flightNumber);
     }
 
     @Override

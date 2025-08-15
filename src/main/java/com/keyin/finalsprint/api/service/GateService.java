@@ -1,12 +1,10 @@
 package com.keyin.finalsprint.api.service;
 
-import com.keyin.finalsprint.api.dto.GateRequest;
 import com.keyin.finalsprint.api.dto.GateResponse;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.entity.Gate;
 import com.keyin.finalsprint.api.repository.AirportRepository;
 import com.keyin.finalsprint.api.repository.GateRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +38,7 @@ public class GateService {
                 .map(this::mapToResponse);
     }
 
-    public GateResponse createGate(GateRequest request) {
+    public Gate createGate(Gate request) {
         Airport airport = airportRepository.findById(request.getAirportId())
                 .orElseThrow(() -> new RuntimeException("Airport not found"));
 
@@ -51,7 +49,7 @@ public class GateService {
         return mapToResponse(gateRepository.save(gate));
     }
 
-    public GateResponse updateGate(Long id, GateRequest request) {
+    public GateResponse updateGate(Long id, Gate request) {
         return gateRepository.findById(id)
                 .map(gate -> {
                     gate.setCode(request.getCode());

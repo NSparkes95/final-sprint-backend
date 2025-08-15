@@ -2,7 +2,6 @@ package com.keyin.finalsprint.api.service;
 
 import com.keyin.finalsprint.api.dto.AirportRequest;
 import com.keyin.finalsprint.api.dto.AirportResponse;
-import com.keyin.finalsprint.api.dto.PassengerRequest;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.entity.City;
 import com.keyin.finalsprint.api.repository.AirportRepository;
@@ -38,7 +37,7 @@ public class AirportService {
                 .map(this::mapToResponse);
     }
 
-    public AirportResponse createAirport(AirportRequest airportRequest) {
+    public Airport createAirport(Airport airportRequest) {
         Airport airport = new Airport();
         airport.setName(airportRequest.getName());
         airport.setCode(airportRequest.getCode());
@@ -51,7 +50,7 @@ public class AirportService {
         return mapToResponse(savedAirport);
     }
 
-    public AirportResponse updateAirport(Long id, AirportRequest updatedAirportRequest) {
+    public Airport updateAirport(Long id, AirportRequest updatedAirportRequest) {
         return airportRepository.findById(id)
                 .map(existing -> {
                     existing.setName(updatedAirportRequest.getName());

@@ -1,11 +1,9 @@
 package com.keyin.finalsprint.api.controller;
 
-import com.keyin.finalsprint.api.dto.GateRequest;
 import com.keyin.finalsprint.api.dto.GateResponse;
 import com.keyin.finalsprint.api.entity.Gate;
 import com.keyin.finalsprint.api.entity.Airport;
 import com.keyin.finalsprint.api.service.GateService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,18 +29,31 @@ public class GateController {
     }
 
     @PostMapping("/gate")
-    public ResponseEntity<GateResponse> createGate(@Valid @RequestBody GateRequest request) {
-        return ResponseEntity.status(201).body(gateService.createGate(request));
+    public ResponseEntity<Gate> createGate(@RequestBody Gate newGate) {
+        Gate created = gateService.createGate(newGate);
+        return ResponseEntity.status(201).body(created);
     }
 
     @PutMapping("/gate/{id}")
-    public ResponseEntity<GateResponse> updateGate(@PathVariable long id, @Valid @RequestBody GateRequest request) {
-        return ResponseEntity.ok(gateService.updateGate(id, request));
+    public ResponseEntity<GateResponse> updateGate(@PathVariable long id, @RequestBody Gate updatedGate) {
+        try {
+            GateResponse gate = gateService.updateGate(id, updatedGate);
+            return ResponseEntity.ok(gate);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/gate/{id}")
     public ResponseEntity<Void> deleteGate(@PathVariable long id) {
         gateService.deleteGate(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/gate/{id}/airport")
+    public ResponseEntity<Object> getAirportByGateId(@PathVariable long id) {
+        return gateService.getGateById(id)
+                .map(gate -> ResponseEntity.ok(gate.getAirport()))
+                .orElse(ResponseEntity.notFound().build());
     }
 }

@@ -19,4 +19,11 @@ public class GateResponse {
     public String getCode() { return code; }
     public Long getAirportId() { return airportId; }
     public String getAirportName() { return airportName; }
+
+    public Object getAirport() {
+        return new Object() {
+            public Long getId() { return airportId; }
+            public String getName() { return airportName; }
+        };
+    }
 }
