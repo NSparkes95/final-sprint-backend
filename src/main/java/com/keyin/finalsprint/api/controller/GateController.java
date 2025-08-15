@@ -99,7 +99,6 @@ public class GateController {
     }
 
     // -------- helpers --------
-    @SuppressWarnings("unchecked")
     private Long extractAirportId(Map<String, Object> body) {
         Object airportIdVal = body.get("airportId");
         if (airportIdVal != null) {

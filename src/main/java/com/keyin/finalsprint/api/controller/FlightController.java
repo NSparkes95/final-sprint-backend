@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin
@@ -33,6 +34,7 @@ public class FlightController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // Create: tolerant to nested/flat shapes
     @PostMapping(value = "/flight", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createFlight(@RequestBody Map<String, Object> body) {
         if (body == null) return ResponseEntity.badRequest().body("Body is required");
@@ -51,7 +53,7 @@ public class FlightController {
 
         Long depId  = extractId(body, "departureAirportId", "departureAirport");
         Long arrId  = extractId(body, "arrivalAirportId",   "arrivalAirport");
-        Long gateId = extractId(body, "gateId",             "gate"); 
+        Long gateId = extractId(body, "gateId",             "gate");
 
         if (isBlank(airlineName) || isBlank(type)) {
             return ResponseEntity.badRequest().body("aircraft.airlineName and aircraft.type are required");
@@ -82,6 +84,8 @@ public class FlightController {
 
     @PutMapping(value = "/flight/{id}", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateFlight(@PathVariable long id, @RequestBody Map<String, Object> body) {
+        System.out.println("PUT /flight/" + id + " body=" + body); 
+
         if (body == null) return ResponseEntity.badRequest().body("Body is required");
 
         String airlineName;
@@ -96,9 +100,12 @@ public class FlightController {
             type        = str(body.get("type"));
         }
 
-        Long depId  = extractId(body, "departureAirportId", "departureAirport");
-        Long arrId  = extractId(body, "arrivalAirportId",   "arrivalAirport");
-        Long gateId = extractId(body, "gateId",             "gate"); // optional
+        String flightNumber = str(body.get("flightNumber"));
+
+        Long depId      = extractId(body, "departureAirportId", "departureAirport");
+        Long arrId      = extractId(body, "arrivalAirportId",   "arrivalAirport");
+        Long gateId     = extractId(body, "gateId",             "gate");   
+        Long aircraftId = extractId(body, "aircraftId",         "aircraft");  
 
         if (isBlank(airlineName) || isBlank(type)) {
             return ResponseEntity.badRequest().body("aircraft.airlineName and aircraft.type are required");
@@ -108,10 +115,23 @@ public class FlightController {
         }
 
         try {
+            // If client didn't send aircraft.id, reuse current one from DB to avoid transient errors
+            if (aircraftId == null) {
+                Flight current = flightService.getFlightById(id)
+                        .orElseThrow(NoSuchElementException::new);
+                if (current.getAircraft() != null) {
+                    aircraftId = current.getAircraft().getId();
+                }
+            }
+
             Flight f = new Flight();
             f.setId(id);
+            if (!isBlank(flightNumber)) {
+                f.setFlightNumber(flightNumber);
+            }
 
             Aircraft aircraft = new Aircraft();
+            if (aircraftId != null) aircraft.setId(aircraftId);
             aircraft.setAirlineName(airlineName);
             aircraft.setType(type);
             f.setAircraft(aircraft);
@@ -127,8 +147,18 @@ public class FlightController {
 
             Flight saved = flightService.updateFlight(id, f);
             return ResponseEntity.ok(saved);
+
+        } catch (NoSuchElementException nf) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Flight not found: " + id);
+
+        } catch (IllegalArgumentException bad) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(bad.getMessage());
+
+        } catch (DataIntegrityViolationException conflict) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Update violates constraints.");
+
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
         }
     }
 
@@ -176,7 +206,6 @@ public class FlightController {
     private String str(Object o) { return o == null ? null : String.valueOf(o); }
     private boolean isBlank(String s) { return s == null || s.trim().isEmpty(); }
 
-    @SuppressWarnings("unchecked")
     private Long extractId(Map<String, Object> body, String flatKey, String nestedKey) {
         Object v = body.get(flatKey);
         if (v != null) {
