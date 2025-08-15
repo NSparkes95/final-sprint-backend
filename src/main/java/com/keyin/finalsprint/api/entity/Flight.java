@@ -1,5 +1,6 @@
 package com.keyin.finalsprint.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.Objects;
 
@@ -33,11 +34,8 @@ public class Flight {
     // Many flights use one gate (departure)
     @ManyToOne
     @JoinColumn(name = "gate_id")
-<<<<<<< HEAD
-=======
     @JsonBackReference
     @NotNull(message = "Gate is mandatory")
->>>>>>> main
     private Gate gate;
 
     // Constructors

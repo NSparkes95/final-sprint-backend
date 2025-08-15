@@ -37,13 +37,13 @@ public class AirportService {
                 .map(this::mapToResponse);
     }
 
-    public Airport createAirport(Airport airportRequest) {
+    public AirportResponse createAirport(Airport airportRequest) {
         Airport airport = new Airport();
         airport.setName(airportRequest.getName());
         airport.setCode(airportRequest.getCode());
 
-        City city = cityRepository.findById(airportRequest.getCityId())
-                .orElseThrow(() -> new RuntimeException("City not found"));
+        City city = (City) cityRepository.findById(airportRequest.getCityId())
+                .orElseThrow();
         airport.setCity(city);
 
         Airport savedAirport = airportRepository.save(airport);
@@ -56,7 +56,7 @@ public class AirportService {
                     existing.setName(updatedAirportRequest.getName());
                     existing.setCode(updatedAirportRequest.getCode());
 
-                    City city = cityRepository.findById(updatedAirportRequest.getCityId())
+                    City city = (City) cityRepository.findById(updatedAirportRequest.getCityId())
                             .orElseThrow(() -> new RuntimeException("City not found"));
                     existing.setCity(city);
 
@@ -83,7 +83,7 @@ public class AirportService {
                 airport.getId(),
                 airport.getName(),
                 airport.getCode(),
-                cityId,
+                Math.toIntExact(cityId),
                 cityName
         );
     }
